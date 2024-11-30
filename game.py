@@ -19,6 +19,7 @@ BRANCO = (255, 255, 255)
 AZUL = (0, 0, 255)
 AMARELO = (255, 255, 0)
 VERDE = (0, 255, 0)
+VERMELHO = (255, 0, 0)
 
 # Classe para o grafo
 class Grafo:
@@ -46,6 +47,18 @@ class Player:
         self.posicao = grafo.get_posicao(no_inicial)
     
     def mover(self, direção):
+        arestas = self.grafo.get_arestas(self.no_atual)
+        if direção in arestas: # Se direcao da aresta esta conectada
+            self.no_atual = direção
+            self.posicao = self.grafo.get_posicao(direção) # Atualiza posicao
+
+class Inimigo:
+    def __init__(self, grafo, no_inicial): # Recebe grafo e no inical
+        self.grafo = grafo
+        self.no_atual = no_inicial
+        self.posicao = grafo.get_posicao(no_inicial)
+    
+    def mover(self, direção): # TROCAR PARA DIJISKTRA
         arestas = self.grafo.get_arestas(self.no_atual)
         if direção in arestas: # Se direcao da aresta esta conectada
             self.no_atual = direção
@@ -84,9 +97,12 @@ grafo.adicionar_aresta("D1", "E1")
 grafo.adicionar_aresta("D1", "D2")
 grafo.adicionar_aresta("D2", "E2")
 grafo.adicionar_aresta("E0", "E1")
+grafo.adicionar_aresta("E2", "E3")
 
 # Coloca player
 player = Player(grafo, "A0")
+# Coloca inimigo
+inimigo = Inimigo(grafo, "E3")
 
 # Funcao para desenhar o grafo na tela
 def desenhar_mapa():
@@ -101,18 +117,24 @@ def desenhar_mapa():
 def desenhar_player():
     pygame.draw.circle(screen, AMARELO, player.posicao, TAMANHO_NO // 2) # Faz ele um pouc menor que o no
 
+# Funcao para desenhar o inimigo
+def desenhar_inimigo():
+    pygame.draw.circle(screen, VERMELHO, inimigo.posicao, TAMANHO_NO // 2) # Faz ele um pouc menor que o no
+
 # Funcao principal do jogo
 def game_loop():
     running = True
+    jogando = True # Determina se o jogo continua
     while running:
         screen.fill(PRETO) # pinta o fundo
         desenhar_mapa()
         desenhar_player()
+        desenhar_inimigo()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            elif event.type == pygame.KEYDOWN: # Usuario aperta alguma tecla
+            elif event.type == pygame.KEYDOWN and jogando: # Usuario aperta alguma tecla e o player nao encostou em um inimigo
                 if event.key == pygame.K_UP: # Apertou cima
                     for vizinho in grafo.get_arestas(player.no_atual):
                         if grafo.get_posicao(vizinho)[1] < player.posicao[1]: # Se Y do vizinho for menor, entao vizinho esta em cima
@@ -136,6 +158,16 @@ def game_loop():
                 elif event.key == pygame.K_ESCAPE: # Apertou Esc
                     pygame.quit() #Fecha jogo e programa
                     sys.exit()
+
+        if player.no_atual == inimigo.no_atual: # Quando o player encosta no inimigo
+            jogando = False # Finaliza jogo
+            screen.fill(PRETO) # Pinta o fundo todo de preto
+            font = pygame.font.Font('freesansbold.ttf', 50) # Seleciona a fonte
+            text = font.render('GAMEOVER', True, PRETO, AZUL) # Escreve GAMEOVER em azul
+            textRect = text.get_rect()
+            textRect.center = (screen_width // 2, screen_height // 2)
+            screen.blit(text, textRect)
+            
         
         pygame.display.flip()
 
