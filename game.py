@@ -5,8 +5,8 @@ import sys
 pygame.init()
 
 # Constantes de configuração
-screen_width = 1000
-screen_height = 800
+screen_width = 1100
+screen_height = 900
 TAMANHO_NO = 20
 
 # Configurar a tela
@@ -107,16 +107,57 @@ BordaY = 50
 grafo.adicionar_no("A0", (BordaX, BordaY))
 grafo.adicionar_no("A1", (BordaX, BordaY + 100))
 grafo.adicionar_no("A2", (BordaX, BordaY + 200))
+grafo.adicionar_no("A6", (BordaX, BordaY + 600))
+grafo.adicionar_no("A8", (BordaX, BordaY + 800))
 grafo.adicionar_no("C0", (BordaX + 100, BordaY))
 grafo.adicionar_no("C1", (BordaX + 100, BordaY + 100))
 grafo.adicionar_no("C2", (BordaX + 100, BordaY + 200))
+grafo.adicionar_no("C4", (BordaX + 100, BordaY + 400))
+grafo.adicionar_no("C6", (BordaX + 100, BordaY + 600))
+grafo.adicionar_no("C7", (BordaX + 100, BordaY + 700))
+grafo.adicionar_no("C8", (BordaX + 100, BordaY + 800))
 grafo.adicionar_no("D1", (BordaX + 200, BordaY + 100))
 grafo.adicionar_no("D2", (BordaX + 200, BordaY + 200))
 grafo.adicionar_no("D3", (BordaX + 200, BordaY + 300))
+grafo.adicionar_no("D4", (BordaX + 200, BordaY + 400))
+grafo.adicionar_no("D5", (BordaX + 200, BordaY + 500))
+grafo.adicionar_no("D6", (BordaX + 200, BordaY + 600))
+grafo.adicionar_no("D7", (BordaX + 200, BordaY + 700))
 grafo.adicionar_no("E0", (BordaX + 300, BordaY))
 grafo.adicionar_no("E1", (BordaX + 300, BordaY + 100))
 grafo.adicionar_no("E2", (BordaX + 300, BordaY + 200))
 grafo.adicionar_no("E3", (BordaX + 300, BordaY + 300))
+grafo.adicionar_no("E6", (BordaX + 300, BordaY + 600))
+grafo.adicionar_no("E7", (BordaX + 300, BordaY + 700))
+grafo.adicionar_no("F3", (BordaX + 400, BordaY + 300))
+grafo.adicionar_no("F4", (BordaX + 400, BordaY + 400))
+grafo.adicionar_no("F7", (BordaX + 400, BordaY + 700))
+grafo.adicionar_no("G1", (BordaX + 500, BordaY + 100))
+grafo.adicionar_no("G3", (BordaX + 500, BordaY + 300))
+grafo.adicionar_no("G4", (BordaX + 500, BordaY + 400))
+grafo.adicionar_no("G5", (BordaX + 500, BordaY + 500))
+grafo.adicionar_no("G6", (BordaX + 500, BordaY + 600))
+grafo.adicionar_no("G8", (BordaX + 500, BordaY + 800))
+grafo.adicionar_no("H1", (BordaX + 600, BordaY + 100))
+grafo.adicionar_no("H2", (BordaX + 600, BordaY + 200))
+grafo.adicionar_no("H3", (BordaX + 600, BordaY + 300))
+grafo.adicionar_no("H4", (BordaX + 600, BordaY + 400))
+grafo.adicionar_no("H5", (BordaX + 600, BordaY + 500))
+grafo.adicionar_no("H6", (BordaX + 600, BordaY + 600))
+grafo.adicionar_no("H7", (BordaX + 600, BordaY + 700))
+grafo.adicionar_no("I0", (BordaX + 700, BordaY ))
+grafo.adicionar_no("I1", (BordaX + 700, BordaY + 100 ))
+grafo.adicionar_no("I3", (BordaX + 700, BordaY + 300 ))
+grafo.adicionar_no("I5", (BordaX + 700, BordaY + 500 ))
+grafo.adicionar_no("I6", (BordaX + 700, BordaY + 600 ))
+grafo.adicionar_no("I7", (BordaX + 700, BordaY + 700 ))
+grafo.adicionar_no("J0", (BordaX + 800, BordaY ))
+grafo.adicionar_no("J1", (BordaX + 800, BordaY + 100 ))
+grafo.adicionar_no("J2", (BordaX + 800, BordaY + 200 ))
+grafo.adicionar_no("J3", (BordaX + 800, BordaY + 300 ))
+grafo.adicionar_no("J6", (BordaX + 800, BordaY + 600 ))
+grafo.adicionar_no("J7", (BordaX + 800, BordaY + 700 ))
+grafo.adicionar_no("J8", (BordaX + 800, BordaY + 800 ))
 
 # Definir arestas -> No <-> No , peso
 grafo.adicionar_aresta("A0", "C0", 1)
@@ -124,21 +165,69 @@ grafo.adicionar_aresta("A0", "A1", 1)
 grafo.adicionar_aresta("A1", "C1", 1)
 grafo.adicionar_aresta("A1", "A2", 1)
 grafo.adicionar_aresta("A2", "C2", 1)
+grafo.adicionar_aresta("A6", "C6", 1)
+grafo.adicionar_aresta("A6", "A8", 2)
+grafo.adicionar_aresta("A8", "C8", 1)
 grafo.adicionar_aresta("C0", "E0", 2)
 grafo.adicionar_aresta("C0", "C1", 1)
 grafo.adicionar_aresta("C1", "D1", 1)
 grafo.adicionar_aresta("C1", "C2", 1)
+grafo.adicionar_aresta("C2", "C4", 2)
+grafo.adicionar_aresta("C4", "C6", 2)
+grafo.adicionar_aresta("C6", "D6", 1)
+grafo.adicionar_aresta("C7", "C8", 1)
+grafo.adicionar_aresta("C7", "D7", 1)
 grafo.adicionar_aresta("D1", "E1", 1)
-grafo.adicionar_aresta("D1", "D2", 2)
+grafo.adicionar_aresta("D1", "D2", 1)
 grafo.adicionar_aresta("D2", "E2", 1)
 grafo.adicionar_aresta("D3", "E3", 1)
+grafo.adicionar_aresta("D3", "D4", 1)
+grafo.adicionar_aresta("D4", "F4", 2)
+grafo.adicionar_aresta("D5", "D6", 1)
+grafo.adicionar_aresta("D5", "G5", 3)
+grafo.adicionar_aresta("D6", "E6", 1)
+grafo.adicionar_aresta("D7", "E7", 1)
 grafo.adicionar_aresta("E0", "E1", 1)
+grafo.adicionar_aresta("E1", "G1", 2)
 grafo.adicionar_aresta("E2", "E3", 1)
+grafo.adicionar_aresta("E3", "E6", 3)
+grafo.adicionar_aresta("E3", "F3", 1)
+grafo.adicionar_aresta("E7", "F7", 1)
+grafo.adicionar_aresta("F3", "G3", 1)
+grafo.adicionar_aresta("F7", "H7", 2)
+grafo.adicionar_aresta("G1", "H1", 1)
+grafo.adicionar_aresta("G3", "G4", 1)
+grafo.adicionar_aresta("G3", "H3", 1)
+grafo.adicionar_aresta("G4", "H4", 1)
+grafo.adicionar_aresta("G5", "H5", 1)
+grafo.adicionar_aresta("G6", "H6", 1)
+grafo.adicionar_aresta("G6", "G8", 2)
+grafo.adicionar_aresta("G8", "J8", 3)
+grafo.adicionar_aresta("H1", "I1", 1)
+grafo.adicionar_aresta("H1", "H2", 1)
+grafo.adicionar_aresta("H2", "J2", 2)
+grafo.adicionar_aresta("H3", "H4", 1)
+grafo.adicionar_aresta("H5", "H6", 1)
+grafo.adicionar_aresta("H7", "I7", 1)
+grafo.adicionar_aresta("F4", "F7", 3)
+grafo.adicionar_aresta("I0", "I1", 1)
+grafo.adicionar_aresta("I0", "J0", 1)
+grafo.adicionar_aresta("I1", "J1", 1)
+grafo.adicionar_aresta("I3", "J3", 1)
+grafo.adicionar_aresta("I3", "I5", 2)
+grafo.adicionar_aresta("I5", "I6", 1)
+grafo.adicionar_aresta("I6", "J6", 1)
+grafo.adicionar_aresta("I7", "J7", 1)
+grafo.adicionar_aresta("J0", "J1", 1)
+grafo.adicionar_aresta("J1", "J2", 1)
+grafo.adicionar_aresta("J2", "J3", 1)
+grafo.adicionar_aresta("J6", "J7", 1)
+grafo.adicionar_aresta("J7", "J8", 1)
 
 # Coloca player
 player = Player(grafo, "A0")
 # Coloca inimigo
-inimigo = Inimigo(grafo, "D3")
+inimigo = Inimigo(grafo, "H4")
 
 # Funcao para desenhar o grafo na tela
 def desenhar_mapa():
@@ -240,11 +329,14 @@ def game_loop():
                             player.mover(vizinho)
                             movimentos +=1 # Incrementa o contador de movimentos
                             break
+                elif event.key == pygame.K_SPACE and jogando: # Apertou barra de espaco
+                    movimentos +=1 # Apenas pula a vez
+                    break
                 elif event.key == pygame.K_ESCAPE: # Apertou Esc
                     pygame.quit() #Fecha jogo e programa
                     sys.exit()
-
-                    print(grafo.get_arestas(player.no_atual))
+                elif event.key == pygame.K_p: # Apertou p
+                    print(player.no_atual)
                 elif event.key == pygame.K_d: # Apertou d 
                     caminhos, distancias = inimigo.dijkstra(player.no_atual) # Executa dijkstra e printa o caminho no terminal
                     caminho = caminhos.get(player.no_atual, [])
