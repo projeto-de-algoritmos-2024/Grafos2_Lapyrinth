@@ -1,37 +1,21 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# Lapyrinth
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 31<br>
+**Conteúdo da Disciplina**: Grafos2<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 21/061850  |  Henrique Azevedo Batalha |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+O projeto é um pequeno jogo criado utilizando a biblioteca pygame da linguagem python. Neste jogo o player (jogador) será colocado em um mapa (grafo) e o seu objetivo é fugir de um inimigo que o persegue utilizando o algorítimo de Dijkstra para determinar o seus movimentos.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
+**Linguagem**: Python<br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 
 ## Uso 
