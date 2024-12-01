@@ -5,7 +5,7 @@ import sys
 pygame.init()
 
 # Constantes de configuração
-screen_width = 1100
+screen_width = 1200
 screen_height = 900
 TAMANHO_NO = 20
 
@@ -255,13 +255,39 @@ def desenhar_gameover():
     textRect.center = (screen_width // 2, screen_height // 2)
     screen.blit(text, textRect)
 
-# Funcao para desenhar o contador de movimentos
-def desenhar_contador(movimentos):
+# Funcao para desenhar o contador de movimentos, turnos, posicao e linha lateral
+def desenhar_contador(movimentos, player, turno):
+    pygame.draw.line(screen, VERDE, (screen_width - 300, 0), (screen_width - 300, screen_height), 3) # Desenha linha lateral na tela
     font = pygame.font.Font('freesansbold.ttf', 12) # Seleciona a fonte 
-    texto = 'Movimentos {}/5'.format(movimentos)  # Formata string 
+    texto = 'Turno: {}'.format(turno)  # Formata string 
     text = font.render(texto, True, PRETO, VERDE)
     textRect = text.get_rect()
-    textRect.center = (screen_width - 50, 10)
+    textRect.center = (screen_width - 150, 10)
+    screen.blit(text, textRect)
+
+    texto = 'Movimentos: {}/5'.format(movimentos)  # Formata string 
+    text = font.render(texto, True, PRETO, VERDE)
+    textRect = text.get_rect()
+    textRect.center = (screen_width - 150, 25)
+    screen.blit(text, textRect)
+
+    texto = 'Posição: {}'.format(player.no_atual)
+    text = font.render(texto, True, PRETO, VERDE)
+    textRect = text.get_rect()
+    textRect.center = (screen_width - 150, 40)
+    screen.blit(text, textRect)
+
+def desenhar_dijkstra(distancias, caminho):
+    font = pygame.font.Font('freesansbold.ttf', 12) # Seleciona a fonte 
+    text = font.render('Caminho Inimigo -> Player:', True, PRETO, VERDE)
+    textRect = text.get_rect()
+    textRect.center = (screen_width - 150, 60)
+    screen.blit(text, textRect)
+
+    texto = '{}'.format(caminho)
+    text = font.render(texto, True, PRETO, VERDE)
+    textRect = text.get_rect()
+    textRect.center = (screen_width - 150, 75)
     screen.blit(text, textRect)
 
 # Funcao principal do jogo
@@ -269,37 +295,29 @@ def game_loop():
     running = True
     jogando = True # Determina se o jogo continua
     movimentos = 0 # Vai guardar o numero de casas andadas
-    
+    turno = 0
+    distancias = None
+    caminho = None
 
     while running: # Inicia o loop de jogo
         screen.fill(PRETO) # pinta o fundo
         desenhar_mapa()
         desenhar_player()
         desenhar_inimigo()
-        desenhar_contador(movimentos)
+        desenhar_contador(movimentos, player, turno)
+        desenhar_dijkstra(distancias, caminho)
 
         if movimentos == 5:
-            #print("Entrou 1")
             movimentos = 0 # Reseta o contador de movimentos
+            turno += 1
             caminhos, distancias = inimigo.dijkstra(player.no_atual)
     
             caminho = caminhos.get(player.no_atual, []) # Pega o caminho para o jogador
-            #print(caminho)
-
-            peso_melhor = 0
             peso_max = 5
             for no in caminho:
-                #print("Entrou 2")
                 proximo_peso = distancias.get(no)
-                proximo_no = no # O proximo no do caminho
                 if proximo_peso <= peso_max:
-                    #print("Entrou 3")
-                    peso_melhor = proximo_peso
-                    inimigo.mover(no)
-                
-
-                
-                
+                    inimigo.mover(no)  
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -335,19 +353,16 @@ def game_loop():
                 elif event.key == pygame.K_ESCAPE: # Apertou Esc
                     pygame.quit() #Fecha jogo e programa
                     sys.exit()
-                elif event.key == pygame.K_p: # Apertou p
-                    print(player.no_atual)
                 elif event.key == pygame.K_d: # Apertou d 
                     caminhos, distancias = inimigo.dijkstra(player.no_atual) # Executa dijkstra e printa o caminho no terminal
                     caminho = caminhos.get(player.no_atual, [])
                     print(distancias)
                     print(caminho)
-
+                    
 
         if player.no_atual == inimigo.no_atual: # Quando o player encosta no inimigo
             jogando = False # Finaliza jogo
-            desenhar_gameover()
-            
+            desenhar_gameover()      
         
         pygame.display.flip()
 
