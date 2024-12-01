@@ -11,7 +11,7 @@ TAMANHO_NO = 20
 
 # Configurar a tela
 screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Labirinto")
+pygame.display.set_caption("Lapyrinth")
 
 # Definir cores
 PRETO = (0, 0, 0)
@@ -277,6 +277,7 @@ def desenhar_contador(movimentos, player, turno):
     textRect.center = (screen_width - 150, 40)
     screen.blit(text, textRect)
 
+# Funcao para desenhar o caminho ate player
 def desenhar_dijkstra(distancias, caminho):
     font = pygame.font.Font('freesansbold.ttf', 12) # Seleciona a fonte 
     text = font.render('Caminho Inimigo -> Player:', True, PRETO, VERDE)
