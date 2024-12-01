@@ -12,16 +12,50 @@
 O projeto é um pequeno jogo criado utilizando a biblioteca pygame da linguagem python. Neste jogo o player (jogador) será colocado em um mapa (grafo) e o seu objetivo é fugir de um inimigo que o persegue utilizando o algorítimo de Dijkstra para determinar o seus movimentos.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+![screenshot1](https://github.com/projeto-de-algoritmos-2024/Grafos2_Lapyrinth/blob/master/screenshots/lapyrinth.png)
+
+![screenshot2](https://github.com/projeto-de-algoritmos-2024/Grafos2_Lapyrinth/blob/master/screenshots/gameover.png)
+
+![screenshot3](https://github.com/projeto-de-algoritmos-2024/Grafos2_Lapyrinth/blob/master/screenshots/mapa.jpg)
 
 ## Instalação 
 **Linguagem**: Python<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+
+Pré-requisitos: 
+
+- Python3
+- Pygame
+
+**1:**
+```
+git clone https://github.com/projeto-de-algoritmos-2024/Grafos2_Lapyrinth.git
+```
+
+**2:**
+```
+pip install pygame
+```
+
+**3:**
+```
+python3 game.py
+```
+Também é possível rodar o projeto acessando o ambiente virtual da seguinte forma:
+```
+source venv/bin/activate
+```
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+O jogador, representado pelo círculo amarelo, pode se mover com as setas direcionais do teclado ou apertar 'barra de espaço' para pular um movimento. Após 5 movimento o inimigo, representado pelo círculo vermelho, usa o algorítimo de Dijkstra para traçar um caminho até o jogador, o inimigo possui a limitação de 5 de custo das arestas. A diferença entre a movimentação dos dois é que na movimentação do jogador, o peso das arestas não é considerado.
 
-## Outros 
+### Comandos Adicionais:
+
+A tecla 'd' executa o algorítimo de Dijkstra, printando a lista de distancias no terminal
+
+A tecla 'esc" fecha o jogo
+
+## Apresentação
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
 
 
