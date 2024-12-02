@@ -56,7 +56,12 @@ A tecla 'd' executa o algorítimo de Dijkstra, printando a lista de distancias n
 A tecla 'esc" fecha o jogo
 
 ## Apresentação
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+
+**Link do vídeo**
+
+[![Assista ao vídeo](https://img.youtube.com/vi/kt3zuHldwyI/0.jpg)](https://www.youtube.com/watch?v=kt3zuHldwyI)
+
+https://www.youtube.com/watch?v=kt3zuHldwyI
 
 
 
